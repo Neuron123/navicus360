@@ -157,6 +157,14 @@ class Quote_Warehouse(models.Model):
 
 
 class Quote_App(models.Model):
+    status_choices = (
+        ("pending","Pending"),
+        ("review","Review"),
+        ("approved_admin","Approved_Admin"),
+        ("approved_client","Approved_Client"),
+        ("rejected","Rejected"),
+    )
+
     user = settings.AUTH_USER_MODEL
     owner = models.ForeignKey(user, on_delete=models.CASCADE)
     quote_type = models.CharField(max_length=200)
@@ -165,6 +173,7 @@ class Quote_App(models.Model):
     country_destination = models.CharField(max_length=100)
     quote_serial_no = models.CharField(max_length=30,default="000")
     created_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=30, choices=status_choices, default="pending")
 
     def __str__(self):
         return str(self.owner)

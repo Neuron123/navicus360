@@ -17,8 +17,6 @@ def not_in_oglclients_group(user):
 	else:
 		return False
 
-
-
 #DataFlair #Send Email
 def sendmail(request):
 

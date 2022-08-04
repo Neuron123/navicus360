@@ -7,12 +7,12 @@ from requests import request
 from .models import Quote, Quote_Air, Quote_App, Quote_Sea, Quote_Road, Quote_Warehouse, QuoteType, Staff_Pricing_Quotation
 from datetime import date
 # import heartrate
-from birdseye import eye
+# from birdseye import eye
 # heartrate.trace(browser=True)
 # Create your views here.
 
 #generate a random serial number
-@eye
+# @eye
 def random_serial_no():
     import random
     import string
@@ -151,11 +151,11 @@ class QuoteCreateView_Warehouse(CreateView):
 class QuoteListView(ListView):
     model = Quote_App
     
-    @eye
+    # @eye
     def get_queryset(self):
         return Quote_App.objects.filter(owner=self.request.user)
 
-    @eye
+    # @eye
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'List Quotation'
@@ -179,7 +179,7 @@ class QuoteEditView(ListView):
         return context
 
 #detailed quotation
-@eye
+# @eye
 def detailed_quote(request, quote_serial,quote_type,pk):
     
     #check group session
@@ -232,18 +232,20 @@ class StaffQuoteListView(ListView):
         return context
 
 #staff add pricing
-@eye
+# @eye
 def staff_add_pricing(request):
-
     section = request.POST.get("section")
     if section == 'ex':
         agent_name = request.POST.get("agent_name")
         quote_app_id = request.POST.get("quote_app_id")
         quote_app_pk = Quote_App.objects.get(id=quote_app_id)
         return render(request, 'sections/ex_A.html')
+
     elif section == 'DAP':
         return render(request, 'sections/dap.html')
+
     elif section == 'CRF': 
         return render(request, 'sections/crf.html')
+        
     elif section == 'FOB':
         return render(request, 'sections/fob.html')
