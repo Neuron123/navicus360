@@ -6,6 +6,7 @@ from django.views.generic.detail import DetailView
 from requests import request
 from .models import Quote, Quote_Air, Quote_App, Quote_Sea, Quote_Road, Quote_Warehouse, QuoteType, Staff_Pricing_Quotation
 from datetime import date
+from django.contrib.auth.decorators import login_required
 # import heartrate
 # from birdseye import eye
 # heartrate.trace(browser=True)
@@ -233,6 +234,7 @@ class StaffQuoteListView(ListView):
 
 #staff add pricing
 # @eye
+@login_required
 def staff_add_pricing(request):
     section = request.POST.get("section")
     if section == 'ex':

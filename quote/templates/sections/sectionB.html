@@ -4,12 +4,6 @@
             <h3>{{ _('Section B - Freight Elements') }}</h3>
         </div>
     </div>
-
-   
-        <div class="tab-pane container active" id="pricing">
-            <form method="post" action="">
-                {% csrf_token %}
-
                 <div class="table">
                     <table class="table table-bordered">
                         <thead>
@@ -26,24 +20,20 @@
                             <tr class="form-group">
                                 <td>1</td>
                                 <td>Air Freight Cost</td>
-                                <td><input type="text" name="freight_bp" class="form-control" required /></td>
-                                <td><input type="text" name="freight_sp" class="form-control" required /></td>
+                                <td><input type="number" name="freight_bp" class="form-control" required /></td>
+                                <td><input type="number" name="freight_sp" class="form-control" required /></td>
                                 <td>0.00</td>
                             </tr>
 
                             <tr class="form-group">
                                 <td>2</td>
                                 <td>Other Charges</td>
-                                <td><input type="text" name="other_freight_bp" class="form-control" required /></td>
-                                <td><input type="text" name="other_freight_sp" class="form-control" required /></td>
+                                <td><input type="number" name="other_freight_bp" class="form-control" required /></td>
+                                <td><input type="number" name="other_freight_sp" class="form-control" required /></td>
                                 <td>0.00</td>
                             </tr>
                             
                         </tbody>
                     </table>
                 </div>
-                
-            </form>
-        </div>
     </div>
-</div>
