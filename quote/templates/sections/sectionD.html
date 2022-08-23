@@ -5,112 +5,137 @@
         </div>
     </div>
 
-                <div class="table">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>{{ _('Item') }}</th>
-                                <th>{{ _('Buying') }}</th>
-                                <th>{{ _('Selling') }}</th>
-                                <th>{{ _('Margin') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                            <tr class="form-group">
-                                <td>1</td>
-                                <td>HS Code</td>
-                                <td><input type="text" name="hs_bp" class="form-control" required /></td>
-                                <td><input type="text" name="hs_sp" class="form-control" required /></td>
-                                <td>0.00</td>
-                            </tr>
+    <form>
+        <div class="table">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>{{ _('Item') }}</th>
+                        <th>{{ _('Buying') }}</th>
+                        <th>{{ _('Selling') }}</th>
+                        <th>{{ _('Margin') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                            <tr class="form-group">
-                                <td>2</td>
-                                <td>FOB Value</td>
-                                <td><input type="text" name="fob_bp" class="form-control" required /></td>
-                                <td><input type="text" name="fob_sp" class="form-control" required /></td>
-                                <td>0.00</td>
-                            </tr>
+                    <tr class="form-group">
+                        <td>1</td>
+                        <td>HS Code</td>
+                        <td><input type="number" name="hs_bp" class="form-control" required /></td>
+                        <td><input type="number" name="hs_sp" class="form-control" required /></td>
+                        <td><input type="number" name="hs_tax" class="form-control" readonly /></td>
+                    </tr>
 
-                            <tr class="form-group">
-                                <td>3</td>
-                                <td>Freight</td>
-                                <td><input type="text" name="freight_fee_bp" class="form-control" required /></td>
-                                <td><input type="text" name="freight_fee_sp" class="form-control" required /></td>
-                                <td>0.00</td>
-                            </tr>
+                    <tr class="form-group">
+                        <td>2</td>
+                        <td>FOB Value</td>
+                        <td><input type="number" name="fob_bp" class="form-control" required /></td>
+                        <td><input type="number" name="fob_sp" class="form-control" required /></td>
+                        <td><input type="number" name="fob_tax" class="form-control" readonly /></td>
+                    </tr>
 
-                            <tr class="form-group">
-                                <td>4</td>
-                                <td>Insurance</td>
-                                <td><input type="text" name="insurance_fee_bp" class="form-control" required /></td>
-                                <td><input type="text" name="insurance_fee_sp" class="form-control" required /></td>
-                                <td>0.00</td>
-                            </tr>
+                    <tr class="form-group">
+                        <td>3</td>
+                        <td>Freight</td>
+                        <td><input type="number" name="freight_fee_bp" class="form-control" required /></td>
+                        <td><input type="number" name="freight_fee_sp" class="form-control" required /></td>
+                        <td><input type="number" name="freight_tax" class="form-control" readonly /></td>
+                    </tr>
 
-                            <tr class="form-group">
-                                <td>5</td>
-                                <td>Custom value(FOB + Ins)</td>
-                                <td><input type="text" name="customs_fee_bp" class="form-control" required /></td>
-                                <td><input type="text" name="customs_fee_sp" class="form-control" required /></td>
-                                <td>0.00</td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
+                    <tr class="form-group">
+                        <td>4</td>
+                        <td>Insurance</td>
+                        <td><input type="number" name="insurance_fee_bp" class="form-control" required /></td>
+                        <td><input type="number" name="insurance_fee_sp" class="form-control" required /></td>
+                        <td><input type="number" name="insurance_tax" class="form-control" readonly /></td>
+                    </tr>
 
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>{{ _('Item') }}</th>
-                                <th>{{ _('Tax Name') }}</th>
-                                <th>{{ _('Tax Rate') }}</th>
-                                <th>{{ _('Tax Amount') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="form-group">
-                                <td>1</td>
-                                <td>Import Duty</td>
-                                <td><input type="text" name="" class="form-control" value="25%" readonly/></td>
-                                <td><input type="text" name="import_duty" class="form-control" required /></td>
-                            </tr>
-                            <tr class="form-group">
-                                <td>2</td>
-                                <td>Excise Duty</td>
-                                <td><input type="text" name="" class="form-control" value="10%" readonly/></td>
-                                <td><input type="text" name="excise_duty" class="form-control" required /></td>
-                            </tr>
-                            <tr class="form-group">
-                                <td>3</td>
-                                <td>VAT</td>
-                                <td><input type="text" name="" class="form-control" value="16%" readonly/></td>
-                                <td><input type="text" name="vat" class="form-control" required /></td>
-                            </tr>
-                            <tr class="form-group">
-                                <td>4</td>
-                                <td>Railway Development Levy</td>
-                                <td><input type="text" name="" class="form-control" value="1.50%" readonly/></td>
-                                <td><input type="text" name="railway_levy" class="form-control" required /></td>
-                            </tr>
-                            <tr class="form-group">
-                                <td>5</td>
-                                <td>IDF Fee</td>
-                                <td><input type="text" name="" class="form-control" value="3.50%" readonly/></td>
-                                <td><input type="text" name="idf_duty" class="form-control" required /></td>
-                            </tr>
-                            <tr class="form-group">
-                                <td>6</td>
-                                <td>Levies</td>
-                                <td><input type="text" name="customs_duty" class="form-control" required /></td>
-                            </tr>
+                    <tr class="form-group">
+                        <td>5</td>
+                        <td>Custom value(FOB + Ins)</td>
+                        <td><input type="number" name="customs_fee_bp" class="form-control" required /></td>
+                        <td><input type="number" name="customs_fee_sp" class="form-control" required /></td>
+                        <td><input type="number" name="customs_tax" class="form-control" readonly /></td>
+                    </tr>
 
-                        </tbody>
-                    </table>
-                </div>
-                
-    </div>
+                    <tr class="form-group">
+                        <td>6</td>
+                        <td>Totals</td>
+                        <td><input type="number" name="total_bp" class="form-control" readonly /></td>
+                        <td><input type="number" name="total_sp" class="form-control" readonly /></td>
+                        <td><input type="number" name="total_tax" class="form-control" readonly /></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>{{ _('Tax Name') }}</th>
+                        <th>{{ _('Tax Rate') }}</th>
+                        <th>{{ _('Tax Amount') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="form-group">
+                        <td>1</td>
+                        <td>Import Duty</td>
+                        <td><input type="text" name="" class="form-control" value="25%" readonly/></td>
+                        <td><input type="number" name="import_duty" class="form-control" required /></td>
+                    </tr>
+                    <tr class="form-group">
+                        <td>2</td>
+                        <td>Excise Duty</td>
+                        <td><input type="text" name="" class="form-control" value="10%" readonly/></td>
+                        <td><input type="number" name="excise_duty" class="form-control" required /></td>
+                    </tr>
+                    <tr class="form-group">
+                        <td>3</td>
+                        <td>VAT</td>
+                        <td><input type="text" name="" class="form-control" value="16%" readonly/></td>
+                        <td><input type="number" name="vat" class="form-control" required /></td>
+                    </tr>
+                    <tr class="form-group">
+                        <td>4</td>
+                        <td>Railway Development Levy</td>
+                        <td><input type="text" name="" class="form-control" value="1.50%" readonly/></td>
+                        <td><input type="number" name="railway_levy" class="form-control" required /></td>
+                    </tr>
+                    <tr class="form-group">
+                        <td>5</td>
+                        <td>IDF Fee</td>
+                        <td><input type="text" name="" class="form-control" value="3.50%" readonly/></td>
+                        <td><input type="number" name="idf_duty" class="form-control" required /></td>
+                    </tr>
+                    <tr class="form-group">
+                        <td>6</td>
+                        <td>Levies</td>
+                        <td><input type="text" name="customs_duty" class="form-control" readonly /></td>
+                        <td><input type="number" name="levies" class="form-control" required /></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container text-right m-3">
+            <input type="button" class="btn btn-primary subE" value="Submit" />
+        </div>
+    </form>
 </div>
+
+{% block javascripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script>
+    function activaTab(tab){
+    $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+    }
+    //call activaTab function on click
+    $('.subD').on('click', function(){
+    activaTab('sectionE');
+    });
+</script>
+{% endblock javascripts %}

@@ -19,5 +19,6 @@ urlpatterns = [
 
     #staff urls
     path('staff/list/',StaffQuoteListView.as_view(),name="staff_list"),
-    path('staff/ex1/',staff_add_pricing,name="staff_add_pricing_ex"),
+    # path('staff/ex1/',staff_add_pricing,name="staff_add_pricing_ex"),
+    path('staff/addpricing/',staff_add_pricing,name="staff_add_pricing"),
 ]

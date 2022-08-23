@@ -17,7 +17,7 @@
       <h3>{{ _('Details on quote') }}</h3>
    </div>
 </div>
-<!-- Nav tabs -->
+<!-- Nav tabs --> 
 <ul class="nav nav-tabs">
    <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#home">Quote Details</a>
@@ -34,8 +34,9 @@
    <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#sectionD">Section D</a>
    </li>
-   <li class="nav-item">
-      <a class="nav-link" href="#sectionE">Section E</a>
+   <!-- <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#sectionE">Section E</a>
+   </li> -->
 </ul>
 <!-- Tab panes -->
 <div class="tab-content">
@@ -57,6 +58,10 @@
 
     <div class="tab-pane container fade" id="sectionD">
       {% include 'sections/sectionD.html' %}
+    </div>
+
+    <div class="tab-pane container fade" id="sectionE">
+      {% include 'sections/sectionE.html' %}
     </div>
    
 </div>

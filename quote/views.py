@@ -237,17 +237,18 @@ class StaffQuoteListView(ListView):
 @login_required
 def staff_add_pricing(request):
     section = request.POST.get("section")
-    if section == 'ex':
-        agent_name = request.POST.get("agent_name")
-        quote_app_id = request.POST.get("quote_app_id")
+    quote_app_id = request.POST.get("quote_app_id")
+
+    if section == 'sectionA':
+        # agent_name = request.POST.get("agent_name")    
         quote_app_pk = Quote_App.objects.get(id=quote_app_id)
-        return render(request, 'sections/ex_A.html')
+        return render(request, 'sections/sectionB.html')
 
-    elif section == 'DAP':
-        return render(request, 'sections/dap.html')
+    elif section == 'sectionB':
+        return render(request, 'sections/sectionB.html')
 
-    elif section == 'CRF': 
+    elif section == 'sectionC': 
         return render(request, 'sections/crf.html')
         
-    elif section == 'FOB':
+    elif section == 'sectionD':
         return render(request, 'sections/fob.html')

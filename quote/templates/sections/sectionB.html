@@ -4,36 +4,141 @@
             <h3>{{ _('Section B - Freight Elements') }}</h3>
         </div>
     </div>
-                <div class="table">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>{{ _('Item') }}</th>
-                                <th>{{ _('Buying') }}</th>
-                                <th>{{ _('Selling') }}</th>
-                                <th>{{ _('Margin') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                            <tr class="form-group">
-                                <td>1</td>
-                                <td>Air Freight Cost</td>
-                                <td><input type="number" name="freight_bp" class="form-control" required /></td>
-                                <td><input type="number" name="freight_sp" class="form-control" required /></td>
-                                <td>0.00</td>
-                            </tr>
+    <form>
+        <div class="table">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>{{ _('Item') }}</th>
+                        <th>{{ _('Buying') }}</th>
+                        <th>{{ _('Selling') }}</th>
+                        <th>{{ _('Margin') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                            <tr class="form-group">
-                                <td>2</td>
-                                <td>Other Charges</td>
-                                <td><input type="number" name="other_freight_bp" class="form-control" required /></td>
-                                <td><input type="number" name="other_freight_sp" class="form-control" required /></td>
-                                <td>0.00</td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
-    </div>
+                    <tr class="form-group">
+                        <td>1</td>
+                        <td>Air Freight Cost</td>
+                        <td><input type="number" name="freight_bp" id="freight_bp" class="form-control" value="0" required /></td>
+                        <td><input type="number" name="freight_sp" id="freight_sp" class="form-control" value="0" required /></td>
+                        <td><input type="number" name="freight_margin" id="freight_margin" class="form-control" value="0" readonly /></td>
+                    </tr>
+
+                    <tr class="form-group">
+                        <td>2</td>
+                        <td>Other Charges</td>
+                        <td><input type="number" name="other_freight_bp" id="other_freight_bp" class="form-control" value="0" required /></td>
+                        <td><input type="number" name="other_freight_sp" id="other_freight_sp" class="form-control" value="0" required /></td>
+                        <td><input type="number" name="other_freight_margin" id="other_freight_margin" class="form-control" readonly value="0" readonly/></td>
+                    </tr>
+
+                    <tr class="form-group">
+                        <td>3</td>
+                        <td>Totals</td>
+                        <td><input type="number" name="total_bp" id="total_bp" class="form-control" value="0" required readonly /></td>
+                        <td><input type="number" name="total_sp" id="total_sp" class="form-control" value="0" required readonly /></td>
+                        <td><input type="number" name="totals_margin" id="totals_margin" class="form-control" value="0" readonly /></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container text-right m-3">
+            <input type="button" class="btn btn-primary subC" value="Proceed to C" />
+        </div>
+
+    </form>
+</div>
+
+{% block javascripts %}
+<script>
+    //function to get the difference between bp and sp
+        function getMargin(bp, sp) {
+            var margin = sp - bp;
+            return margin;
+        }
+
+        //select bp and sp values by id
+        var freight_bp = document.getElementById('freight_bp');
+        var freight_sp = document.getElementById('freight_sp');
+        var freight_margin = document.getElementById('freight_margin');
+
+        //get the margin value
+        freight_bp.value = getMargin(freight_bp.value, freight_sp.value);
+        //get the margin value on change of bp and sp
+        freight_bp.onchange = function() {
+            freight_margin.value = getMargin(freight_bp.value, freight_sp.value);
+        }
+        freight_sp.onchange = function() {
+            freight_margin.value = getMargin(freight_bp.value, freight_sp.value);
+        }
+
+        //select bp and sp values by id
+        var other_freight_bp = document.getElementById('other_freight_bp');
+        var other_freight_sp = document.getElementById('other_freight_sp');
+        var other_freight_margin = document.getElementById('other_freight_margin');
+
+        //get the margin value
+        other_freight_bp.value = getMargin(other_freight_bp.value, other_freight_sp.value);
+        //get the margin value on change of bp and sp
+        other_freight_bp.onchange = function() {
+            other_freight_margin.value = getMargin(other_freight_bp.value, other_freight_sp.value);
+        }
+        other_freight_sp.onchange = function() {
+            other_freight_margin.value = getMargin(other_freight_bp.value, other_freight_sp.value);
+        }
+
+        //select bp and sp values by id
+        var total_bp = document.getElementById('total_bp').value;
+        var total_sp = document.getElementById('total_sp').value;
+        var totals_margin = document.getElementById('totals_margin').value;
+
+        //get the margin value
+        total_bp.value = getMargin(total_bp.value, total_sp.value);
+        //get the margin value on change of bp and sp
+        total_bp.onchange = function() {
+            totals_margin.value = getMargin(total_bp.value, total_sp.value);
+        }
+        total_sp.onchange = function() {
+            totals_margin.value = getMargin(total_bp.value, total_sp.value);
+        }
+
+        //sum of all bp and sp values
+        var sum_bp = 0;
+        var sum_sp = 0;
+        var sum_margin = 0;
+        
+        var total_bp = document.getElementById('total_bp');
+        var total_sp = document.getElementById('total_sp');
+        var totals_margin = document.getElementById('totals_margin');
+
+        $('.form-control').on('change',function(){
+            sum_bp = parseInt(freight_bp.value) + parseInt(other_freight_bp.value);
+            sum_sp = parseInt(freight_sp.value) + parseInt(other_freight_sp.value);
+            sum_margin = parseInt(freight_margin.value) + parseInt(other_freight_margin.value);
+
+            // totals_bp.value = sum_bp;
+            // totals_sp.value = sum_sp;
+            // totals.value = sum_margin;
+            document.getElementById('total_bp').value = sum_bp;
+            document.getElementById('total_sp').value = sum_sp;
+            document.getElementById('totals_margin').value = sum_margin;
+
+        });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script>
+    function activaTab(tab){
+    $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+    }
+    //call activaTab function on click
+    $('.subC').on('click', function(){
+    activaTab('sectionC');
+    });
+</script>
+
+{% endblock javascripts %}
